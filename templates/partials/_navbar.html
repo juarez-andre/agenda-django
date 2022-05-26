@@ -1,0 +1,20 @@
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <p style="margin: auto; font-weight: bold;" >
+            <a class="container" style="text-decoration: none; color: white;" href="{% url 'listagem' %}">Agenda</a>
+            <a class="container" style="text-decoration: none; color: white;"href="{% url 'logout' %}">Logout</a>
+            </p>
+        </nav>
+    </header>
+{% else %}
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+        <a style="text-decoration: none; color: white; margin: auto; font-weight: bold;" href="{% url 'login' %}">Login</a>
+    </nav>
+</header>
+{% endif %}
+{% endblock %}
+

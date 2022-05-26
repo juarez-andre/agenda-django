@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="margin-top: 50px; width: 30vw;">
+    <form action="{% url 'cadastro' %}" method="post" class="form-control">
+        {% csrf_token %}
+        <p style="font-weight: bold; text-align: center; font-size: 30px;">Cadastro</p>
+        {% for fields in form.visible_fields %}
+            <section style="margin: 5px;">
+            {{ fields.label }}
+            {{ fields }}
+            </section>
+            {% for error in fields.errors %}
+                <section style="margin: 5px;"class='alert alert-danger' role=”alert”>
+                {{ fields.errors }}
+                </section>
+            {% endfor %}
+        {% endfor %}
+        <section style="margin: 5px;">
+        <input class ="d-grid" type="submit" style="margin: 15px 0px;" value="Cadastrar">
+        </section>
+    </form>
+</div>
+{% endblock %}

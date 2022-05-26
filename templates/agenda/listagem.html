@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Data</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for compromisso in compromissos %}
+            <tr>
+                <td>
+                {{ compromisso.titulo }}
+                </td>
+                <td>
+                    {{ compromisso.data }}
+                </td>
+                <td>
+                    {{ compromisso.descricao }}
+                </td>
+                <td>
+                    <a href="{% url 'delete' compromisso.id %}"><button class="btn btn-danger">Deletar</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div style="text-align: center;">
+    <a href="{% url 'create' %}"><button class="btn btn-primary">Adicionar um compromisso</button></a>
+    </div>
+</div>
+{% endblock %}
